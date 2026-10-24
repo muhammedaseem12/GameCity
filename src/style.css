@@ -429,3 +429,10 @@ body{background:#f2f8fd;color:#18324b}
 
 .chat-list-heading{display:flex!important;align-items:center;justify-content:space-between;gap:10px;padding:8px 16px 12px!important;color:#24445f!important;font-size:13px!important;letter-spacing:.04em;text-transform:uppercase}
 .chat-list-heading .online-count{font-size:11px;letter-spacing:0;color:#218d77;white-space:nowrap}
+
+
+/* Login dialog must sit above all mobile navigation and page layers */
+.modal-shade.auth-required{position:fixed!important;inset:0!important;z-index:99999!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow-y:auto!important;background:rgba(18,34,48,.62)!important;backdrop-filter:blur(6px);padding:20px 14px calc(20px + env(safe-area-inset-bottom))!important;pointer-events:auto!important}
+.modal-shade.auth-required .auth-card{position:relative!important;z-index:100000!important;width:min(420px,100%)!important;max-height:calc(100dvh - 40px)!important;overflow-y:auto!important;background:#fff!important;color:#183d59!important;pointer-events:auto!important}
+.modal-shade.auth-required input{background:#fff!important;color:#183d59!important;min-height:46px}
+.modal-shade.auth-required .close-modal{z-index:2}
