@@ -176,3 +176,6 @@ footer{border-color:#e7e7e7}
  .chat-layout{border-radius:0;border-left:0;border-right:0}
  .mobile-nav{padding-top:10px}
 }
+
+.recording-dot-only{display:inline-block;flex:0 0 10px;width:10px;height:10px;margin:0 5px;background:#ef3340;border-radius:50%;box-shadow:0 0 0 4px #ffe1e4;animation:recording-pulse .9s ease-in-out infinite}
+.send-form .button:disabled{opacity:.65;cursor:wait}
