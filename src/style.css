@@ -397,3 +397,16 @@ body{background:#f2f8fd;color:#18324b}
 .top-actions{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto}
 .top-login{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:10px 16px;border-radius:22px;background:#258bca;color:#fff;font-size:13px;font-weight:700;white-space:nowrap}
 @media(max-width:680px){.topbar{padding-right:14px}.top-login{min-height:36px;padding:8px 12px;font-size:12px}.top-login svg{width:15px;height:15px}}
+
+
+.topbar{position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.topbar>div:first-child{min-width:0;flex:1}
+.top-actions{margin-left:auto;display:flex;justify-content:flex-end;align-items:flex-start;flex:0 0 auto}
+.top-login{position:relative;z-index:2}
+@media(max-width:680px){
+ .topbar{padding-right:12px;align-items:flex-start}
+ .top-actions{position:absolute;top:8px;right:12px}
+ .top-login{min-height:36px;padding:8px 12px;border-radius:22px}
+ .topbar .eyebrow{padding-right:90px}
+ .topbar h1{padding-right:4px}
+}
