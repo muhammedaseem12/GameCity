@@ -3,3 +3,52 @@
 .poll-create{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}.poll-create input,.meme-url{width:100%;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;color:var(--ink);outline:none}.meme-url{margin:0 0 12px}.poll-options{display:grid;gap:7px;margin:12px 0}.poll-option{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:11px 13px;border:1px solid #ded5f5;border-radius:11px;background:#f8f5ff;color:var(--ink);text-align:left}.poll-option:hover{border-color:#9a83ee;background:#f0ebff}.poll-option b{font-size:11px;color:#7862c9;white-space:nowrap}.meme-image-link{display:block;max-width:100%;margin:10px 0 14px}.meme-image{display:block;width:auto;max-width:100%;max-height:520px;object-fit:contain;border-radius:13px;border:1px solid var(--line)}.online-count{color:#168a69;font-size:11px;margin-left:7px;white-space:nowrap}.message-tools{display:flex;justify-content:flex-end;gap:4px;margin-top:4px}.message-tools button{display:inline-grid;place-items:center;width:24px;height:22px;border:0;border-radius:6px;background:#ffffffa6;color:#746d8e}.message-tools button:hover{background:#e9e2ff;color:#6047b7}@media(max-width:680px){.poll-create{grid-template-columns:1fr}}
 
 .profile-form{display:grid;gap:16px;max-width:680px}.profile-form>label{display:grid;gap:7px;color:var(--ink);font-size:13px;font-weight:700}.profile-form input,.profile-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;color:var(--ink);font:inherit;outline:none}.profile-form input:focus,.profile-form textarea:focus{border-color:#9a83ee;box-shadow:0 0 0 3px #7654d51a}.profile-form textarea{min-height:100px;resize:vertical}.profile-form label small{font-size:11px;font-weight:400;color:var(--muted)}
+
+
+/* Refined, professional chat workspace */
+.chat-friends-tools{margin-top:20px;padding:18px;border:1px solid #e8e5f5;border-radius:16px;background:linear-gradient(145deg,#fff 0%,#fbfaff 100%)}
+.chat-friends-tools h3{font:750 13px Manrope,sans-serif;color:#373251;margin:18px 0 8px}
+.chat-friends-tools h3:first-child{margin-top:0}
+.chat-friends-tools .inline-form{margin-top:12px}
+.chat-friends-tools .people-list{margin-top:12px}
+.chat-friends-tools .person-row{padding:12px 4px}
+.chat-friends-tools .person-row:hover{background:#faf8ff}
+.chat-friends-tools .person-row .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(145deg,#e9e1ff,#e3f8fb);border:1px solid #e5def8}
+.chat-friends-tools .person-info b{font-size:13px;color:#302d49}
+.chat-friends-tools .person-info small{font-size:11px;color:#8985a0}
+.chat-layout{grid-template-columns:minmax(170px,.62fr) minmax(0,1.8fr);border:1px solid #e5e1f1;border-radius:18px;background:#fff;box-shadow:0 12px 30px #37305c0a;min-height:360px}
+.chat-list{background:#faf9fe;padding:14px 10px;border-right:1px solid #eae6f4}
+.chat-list>b{display:block;padding:5px 9px 12px;color:#77718f;font:800 10px Manrope,sans-serif;letter-spacing:1.2px;text-transform:uppercase}
+.chat-list button{gap:10px;padding:11px 10px;border-radius:12px;font-size:12px;font-weight:650;color:#625d7b}
+.chat-list button svg{flex-shrink:0;color:#8972d8}
+.chat-list button:hover,.chat-list button.chat-selected{background:#eee9ff;color:#5f45b8}
+.chat-pane{padding:15px;background:linear-gradient(180deg,#fff 0%,#fcfbff 100%)}
+.chat-title{padding:2px 0 13px;border-bottom:1px solid #eeeaf6;font-size:13px;color:#302d49}
+.chat-title b{display:flex;align-items:center;gap:8px}
+.chat-title b:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#31bd91;box-shadow:0 0 0 3px #e2f8ef}
+.messages{background:radial-gradient(ellipse at top right,#f3efff80,transparent 45%);gap:12px;min-height:220px;padding:18px 8px}
+.bubble{max-width:min(82%,420px);padding:11px 14px;background:#f1eefb;border:1px solid #e8e1f8;border-radius:15px 15px 15px 5px;box-shadow:0 3px 8px #39305c08}
+.bubble.mine{background:linear-gradient(135deg,#eee8ff,#e6f8fb);border-color:#dfd9f6;border-radius:15px 15px 5px 15px}
+.bubble p{font-size:13px;line-height:1.55;color:#383451}
+.bubble small{font-size:10px;color:#8c86a4}
+.send-form{align-items:center;gap:8px;padding-top:13px;border-top:1px solid #eeeaf6}
+.send-form input{border-radius:14px;padding:13px 14px;background:#fff;border-color:#e4e0f0;font-size:13px}
+.send-form .button{min-height:44px;border-radius:13px}
+.send-form .button.secondary{background:#fff}
+.chat-friends-tools .inline-form input{border-radius:13px;padding:13px 14px}
+@media(max-width:680px){
+ .chat-friends-tools{padding:15px 13px;margin-top:16px;border-radius:16px}
+ .chat-friends-tools .inline-form{gap:7px}
+ .chat-friends-tools .inline-form input{width:auto;flex:1;font-size:13px}
+ .chat-friends-tools .inline-form .button{padding:11px 12px}
+ .chat-layout{grid-template-columns:1fr;margin-top:15px;border-radius:17px;min-height:0}
+ .chat-list{border-right:0;border-bottom:1px solid #eae6f4;padding:11px;display:block;overflow:visible}
+ .chat-list>b{padding:3px 4px 8px}
+ .chat-list button{width:100%;min-width:0;padding:11px 10px}
+ .chat-pane{padding:12px;min-height:290px}
+ .messages{min-height:150px;max-height:300px;padding:13px 3px}
+ .bubble{max-width:88%}
+ .send-form{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px}
+ .send-form input{grid-column:1/-1;width:100%;padding:12px}
+ .send-form .button{padding:10px 12px;font-size:11px}
+}
