@@ -41,7 +41,7 @@ grant execute on function public.are_friends(uuid,uuid) to authenticated;
 -- Membership reads must not use a recursive policy.
 drop policy if exists "members can see membership" on public.conversation_members;
 create policy "members can see membership" on public.conversation_members for select to authenticated
-using (user_id=auth.uid() or exists(select 1 from public.conversation_members own where own.conversation_id=conversation_members.conversation_id and own.user_id=auth.uid()));
+using (user_id=auth.uid());
 -- Explicit API privileges; RLS still decides which rows are accessible.
 grant usage on schema public to anon, authenticated;
 grant select on public.posts,public.profiles,public.post_comments,public.post_likes,public.poll_votes,public.user_presence to authenticated;
