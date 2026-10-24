@@ -183,7 +183,28 @@ page=function(n){oldPage(n);if(n==='people'&&currentUser)loadRequestsAndFriends(
 supabase.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;if(currentUser){try{await supabase.from('user_presence').update({is_online:true,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)}catch{} }});
 window.addEventListener('beforeunload',()=>{if(currentUser)supabase.from('user_presence').update({is_online:false,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)});
 
-/* Resilient mobile navigation and control feedback */
-document.addEventListener('click',function(e){const nav=e.target.closest('button[data-page]');if(nav){e.preventDefault();page(nav.dataset.page);return}});
-window.addEventListener('error',function(e){console.error('KMCT UI error:',e.message,e.filename,e.lineno)});
+/* Resilient navigation and click handling */
+(function(){
+  const validPages = new Set(['feed','memes','chat','people','confessions','polls','events','lost','notifications']);
+  document.addEventListener('click', function(e) {
+    const target = e.target instanceof Element ? e.target : e.target?.parentElement;
+    if (!target) return;
+    const nav = target.closest('button[data-page]');
+    if (nav && validPages.has(nav.dataset.page)) {
+      e.preventDefault();
+      try { page(nav.dataset.page); } catch (err) { console.error('Navigation failed:', err); toast('Could not open this section. Please reload.'); }
+    }
+  }, true);
+  // Keep the modal layer from intercepting touches while closed.
+  const modal = document.getElementById('back');
+  if (modal) {
+    const observer = new MutationObserver(() => {
+      modal.style.pointerEvents = modal.classList.contains('open') ? 'auto' : 'none';
+    });
+    observer.observe(modal, {attributes:true, attributeFilter:['class']});
+    modal.style.pointerEvents = modal.classList.contains('open') ? 'auto' : 'none';
+  }
+})();
+window.addEventListener('error',function(e){console.error('KMCT UI error:',e.message,e.filename,e.lineno);const t=document.getElementById('toast');if(t&&e.message){t.textContent='A page script error occurred. Reload the page and try again.';t.classList.add('show')}});
+window.addEventListener('unhandledrejection',function(e){console.error('KMCT async error:',e.reason);});
 </script></body></html>
