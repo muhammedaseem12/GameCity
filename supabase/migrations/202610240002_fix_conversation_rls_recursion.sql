@@ -1,9 +1,8 @@
 -- Fix infinite-recursion RLS on conversation_members.
--- The old membership SELECT policy queried conversation_members itself, causing:
--- "infinite recursion detected in policy for relation conversation_members".
--- A narrowly scoped SECURITY DEFINER helper reads membership without re-entering RLS.
+-- Use a unique helper name to avoid any pre-existing overloaded
+-- is_conversation_member functions in this Supabase project.
 
-create or replace function public.is_conversation_member(p_conversation_id uuid)
+create or replace function public.kmct_rls_member_check_20261024(p_conversation_id uuid)
 returns boolean
 language sql
 stable
@@ -18,26 +17,26 @@ as $$
   );
 $$;
 
-revoke all on function public.is_conversation_member(uuid) from public;
-grant execute on function public.is_conversation_member(uuid) to authenticated;
+revoke all on function public.kmct_rls_member_check_20261024(uuid) from public;
+grant execute on function public.kmct_rls_member_check_20261024(uuid) to authenticated;
 
 drop policy if exists "members can see membership" on public.conversation_members;
 create policy "members can see membership"
 on public.conversation_members
 for select to authenticated
-using (public.is_conversation_member(conversation_id));
+using (public.kmct_rls_member_check_20261024(conversation_id));
 
 drop policy if exists "conversation members read conversations" on public.conversations;
 create policy "conversation members read conversations"
 on public.conversations
 for select to authenticated
-using (public.is_conversation_member(id));
+using (public.kmct_rls_member_check_20261024(id));
 
 drop policy if exists "conversation members read messages" on public.messages;
 create policy "conversation members read messages"
 on public.messages
 for select to authenticated
-using (public.is_conversation_member(conversation_id));
+using (public.kmct_rls_member_check_20261024(conversation_id));
 
 drop policy if exists "members send messages only as self" on public.messages;
 create policy "members send messages only as self"
@@ -45,5 +44,5 @@ on public.messages
 for insert to authenticated
 with check (
   sender_id = auth.uid()
-  and public.is_conversation_member(conversation_id)
+  and public.kmct_rls_member_check_20261024(conversation_id)
 );
