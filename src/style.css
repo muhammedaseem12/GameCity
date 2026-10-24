@@ -373,3 +373,21 @@ body{background:#f2f8fd;color:#18324b}
 .community-room-form{background:#fff}
 .room-input-row input{background:#f5faff;border-color:#d3e7f5;color:#183d59}
 .room-input-row .button.primary{background:#248ed0}
+
+
+/* Chat opened = clean, full-screen mobile conversation */
+@media(max-width:680px){
+ .widget:has(.chat-layout.conversation-open){position:fixed!important;z-index:30;top:0;left:0;right:0;bottom:70px;width:100vw;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#f1f8fd!important;overflow:hidden!important}
+ .widget:has(.chat-layout.conversation-open) .chat-page-heading,
+ .widget:has(.chat-layout.conversation-open) .chat-friends-tools{display:none!important}
+ .widget:has(.chat-layout.conversation-open) .chat-layout,
+ .widget:has(.chat-layout.conversation-open) .chat-layout.conversation-open{display:flex!important;flex-direction:column!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;margin:0!important;border:0!important;border-radius:0!important;overflow:hidden!important}
+ .widget:has(.chat-layout.conversation-open) .chat-list{display:none!important}
+ .widget:has(.chat-layout.conversation-open) .chat-pane{display:flex!important;flex:1 1 auto!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;overflow:hidden!important}
+ .widget:has(.chat-layout.conversation-open) .chat-title{flex:0 0 62px!important;min-height:62px!important;padding:8px 13px!important;background:#eaf6ff!important}
+ .widget:has(.chat-layout.conversation-open) .messages{flex:1 1 auto!important;min-height:0!important;height:auto!important;overflow-y:auto!important;padding:12px 10px 16px!important}
+ .widget:has(.chat-layout.conversation-open) .send-form{flex:0 0 auto!important;width:100%!important;box-sizing:border-box!important;padding:8px 8px calc(8px + env(safe-area-inset-bottom))!important;background:#fff!important}
+ .widget:has(.chat-layout.conversation-open) .send-form input{font-size:14px!important}
+ .widget:has(.chat-layout.conversation-open) .chat-pane .empty{flex:1;display:flex;align-items:center;justify-content:center}
+ body:has(.widget .chat-layout.conversation-open){overflow:hidden}
+}
