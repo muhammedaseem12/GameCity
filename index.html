@@ -41,12 +41,13 @@ body{background:radial-gradient(ellipse at 8% 0%,#ffe4f1 0,transparent 34%),radi
 
 nav i[data-lucide]{width:18px;height:18px;vertical-align:middle;margin-right:8px;stroke-width:1.8}.mobile [data-lucide]{width:19px;height:19px;display:inline-block;margin:auto;stroke-width:1.8}.nav button{display:flex;align-items:center;gap:2px}.nav button.active{font-weight:650}.btn,.primary{font-weight:600;letter-spacing:.05px}.title{font-weight:760}.post,.widget,.composer{box-shadow:0 7px 24px rgba(55,45,115,.055)}
 </style></head><body>
-<div class="app"><aside class="side"><div class="brand">✳ <b>KMCT</b></div><nav class="nav"><button class="active" data-page="feed"><i data-lucide="house"></i> Home feed</button><button data-page="memes"><i data-lucide="image"></i> Meme zone</button><button data-page="chat"><i data-lucide="messages-square"></i> Messages</button><button data-page="confessions"><i data-lucide="message-circle"></i> Confessions</button><button data-page="polls"><i data-lucide="chart-no-axes-column"></i> Polls</button><button data-page="events"><i data-lucide="calendar-days"></i> Campus events</button><button data-page="lost"><i data-lucide="search"></i> Lost &amp; found</button><button data-page="notifications"><i data-lucide="bell"></i> Notifications</button></nav><div class="widget" style="margin-top:30px"><div class="avatar">G</div><strong style="display:block;margin-top:8px">Guest explorer</strong><p class="muted">Frontend preview</p><button class="primary" id="loginSide">Email sign in ↗</button></div></aside>
+<div class="app"><aside class="side"><div class="brand">✳ <b>KMCT</b></div><nav class="nav"><button class="active" data-page="feed"><i data-lucide="house"></i> Home feed</button><button data-page="memes"><i data-lucide="image"></i> Meme zone</button><button data-page="chat"><i data-lucide="messages-square"></i> Messages</button><button data-page="people"><i data-lucide="users"></i> Find people</button><button data-page="confessions"><i data-lucide="message-circle"></i> Confessions</button><button data-page="polls"><i data-lucide="chart-no-axes-column"></i> Polls</button><button data-page="events"><i data-lucide="calendar-days"></i> Campus events</button><button data-page="lost"><i data-lucide="search"></i> Lost &amp; found</button><button data-page="notifications"><i data-lucide="bell"></i> Notifications</button></nav><div class="widget" style="margin-top:30px"><div class="avatar">G</div><strong style="display:block;margin-top:8px">Guest explorer</strong><p class="muted">Frontend preview</p><button class="primary" id="loginSide">Email sign in ↗</button></div></aside>
 <main class="main"><header class="top"><div><div class="eyebrow">✦ YOUR CORNER OF THE INTERNET</div><h1 class="title" id="title">The feed ✦</h1></div><div class="row"><input class="search" id="search" placeholder="⌕ Search"><button class="primary" id="loginTop">Log in</button></div></header>
 <section class="hero"><div class="eyebrow">✧ YOUR PEOPLE. YOUR SPACE.</div><h2>Real talk.<br><span>Unreal vibes.</span></h2><p>Memes that hit too close. Chats that go all night. Your community starts here.</p><span class="pill">✦ Made for sharing</span><span class="pill">◉ Be kind, be you</span><span class="pill">⌁ Find your people</span></section>
 <section class="page active" id="page-feed"><div class="composer"><div class="avatar">G</div><div class="composebody"><textarea id="postText" placeholder="What's happening in your orbit?"></textarea><div class="row"><div><button class="btn" id="memeCompose">😂 Meme</button> <button class="btn" id="confessCompose">♧ Confess</button> <button class="btn" id="pollCompose">▥ Poll</button></div><button class="primary" id="publish">Post ✦</button></div></div></div><div class="sectionhead"><h2>Community pulse</h2><div class="tabs" id="tabs"><button class="active" data-filter="all">For you</button><button data-filter="meme">Memes</button><button data-filter="confession">Confessions</button><button data-filter="poll">Polls</button></div></div><div id="feed"></div></section>
 <section class="page" id="page-memes"><div class="sectionhead"><h2>Meme zone 😂</h2><button class="primary" id="newMeme">Create meme +</button></div><p class="muted">Campus humour, shared respectfully. Never post private photos without consent.</p><div id="memelist"></div></section>
-<section class="page" id="page-chat"><div class="widget"><h2>Messages ◌</h2><p class="muted">Private messaging needs secure sign-in and a connected backend before messages can be delivered between people.</p><button class="primary" id="chatLogin">Sign in to chat ↗</button><div class="empty" style="margin-top:14px">✉️<br><b style="display:block;color:white;margin:8px">Your inbox is waiting</b>Real messages are not enabled in this preview.</div></div></section>
+<section class="page" id="page-chat"><div class="widget"><h2>Messages ◌</h2><p class="muted">Private messages are available only between accepted friends. The global room is open to signed-in members.</p><div class="row"><button class="primary" id="joinGlobal">Join KMCT Global Chat</button><button class="btn" id="refreshChats">Refresh inbox</button></div><div id="chatStatus" class="muted" style="margin:10px 0">Sign in to load your conversations.</div><div id="conversationList"></div><div id="chatRoom" style="display:none"><div class="row" style="margin:12px 0"><h3 id="chatRoomTitle">Chat</h3><button class="btn" id="backChats">Back</button></div><div id="messageList" style="max-height:360px;overflow:auto;padding:8px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px"></div><form id="messageForm" class="row"><input id="messageText" maxlength="5000" placeholder="Write a message…" style="flex:1;min-width:0"><button class="primary" type="submit">Send</button></form></div></div></section>
+<section class="page" id="page-people"><div class="widget"><h2>Find your people ✦</h2><p class="muted">Search usernames and send friend requests. Private chat unlocks after the request is accepted.</p><div class="row"><input id="peopleSearch" placeholder="Search username…" style="flex:1;min-width:0"><button class="primary" id="searchPeople">Search</button></div><div id="peopleResults" style="margin-top:12px"></div></div><div class="widget"><h3>Friend requests</h3><div id="incomingRequests" class="muted">Sign in to view requests.</div></div><div class="widget"><h3>Your friends</h3><div id="friendList" class="muted">Sign in to load friends.</div></div></section>
 <section class="page" id="page-confessions"><div class="sectionhead"><h2>Confessions, anonymously ♧</h2><button class="primary" id="newConfession">Share safely +</button></div><p class="muted">No threats, doxxing, or targeting people.</p><div id="confessionlist"></div></section>
 <section class="page" id="page-polls"><div class="sectionhead"><h2>Campus takes ▥</h2><button class="primary" id="newPoll">Start poll +</button></div><div id="polllist"></div></section>
 <section class="page" id="page-events"><div class="sectionhead"><h2>Campus events ▦</h2></div><div class="widget"><div class="event"><div class="date"><b>24</b><small>OCT</small></div><div><strong>Open Mic Night</strong><small>Courtyard · 5:30 PM</small></div></div><div class="event"><div class="date"><b>27</b><small>OCT</small></div><div><strong>Game Jam Meetup</strong><small>Innovation lab · 3:00 PM</small></div></div><p class="muted">Illustrative sample events, not verified college announcements.</p></div></section>
@@ -79,4 +80,105 @@ $('#newLost').onclick=()=>open('Lost or found item','Share safe details; arrange
 let authMode='signin';const login=()=>{authMode='signin';showAuth()};function showAuth(){open(authMode==='signup'?'Create your KMCT account':'Sign in to KMCT Community','Use your email and password. New users can create an account.','<div class="field"><label>Username (sign-up only)</label><input id="fusername" autocomplete="username" placeholder="your_username"></div><div class="field"><label>Email address</label><input id="femail" type="email" autocomplete="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input id="fpass" type="password" autocomplete="'+(authMode==='signup'?'new-password':'current-password')+'" placeholder="At least 8 characters"></div><button class="btn" id="toggleAuth" type="button">'+(authMode==='signup'?'Already have an account? Sign in':'New here? Create account')+'</button>',async()=>{const email=$('#femail').value.trim(),password=$('#fpass').value,username=$('#fusername').value.trim();if(!email||!password)return toast('Enter email and password.');if(authMode==='signup'){if(!/^[a-zA-Z0-9_]{3,24}$/.test(username))return toast('Username must be 3–24 letters, numbers, or underscores.');const {data,error}=await supabase.auth.signUp({email,password,options:{data:{username,display_name:username}}});if(error)return toast(error.message);if(data.session){currentUser=data.user;close();await afterAuth()}else{close();toast('Check your email to confirm your account, then sign in.')}}else{const {data,error}=await supabase.auth.signInWithPassword({email,password});if(error)return toast(error.message);currentUser=data.user;close();await afterAuth()}});setTimeout(()=>{const toggle=$('#toggleAuth');if(toggle)toggle.onclick=()=>{authMode=authMode==='signup'?'signin':'signup';showAuth()}},0)}async function afterAuth(){const {data}=await supabase.from('profiles').select('username').eq('id',currentUser.id).maybeSingle();const username=data?.username||currentUser.email?.split('@')[0]||'Member';$('[id="loginTop"],[id="loginSide"]').forEach(b=>{if(b)b.textContent=username});toast('Signed in successfully.');await loadPosts();render()}async function loadPosts(){const {data,error}=await supabase.from('posts').select('id,author_id,kind,body,is_anonymous,poll_options,created_at').order('created_at',{ascending:false}).limit(100);if(error){console.error(error);return}const ids=[...new Set((data||[]).filter(p=>!p.is_anonymous).map(p=>p.author_id))];let profiles={};if(ids.length){const r=await supabase.from('profiles').select('id,username').in('id',ids);(r.data||[]).forEach(x=>profiles[x.id]=x.username)}posts=(data||[]).map(p=>({id:p.id,type:p.kind,name:p.is_anonymous?'Anonymous':(profiles[p.author_id]||'Member'),initial:p.is_anonymous?'?':(profiles[p.author_id]||'M').slice(0,1).toUpperCase(),time:new Date(p.created_at).toLocaleString(),text:p.body,art:null,options:Array.isArray(p.poll_options)?p.poll_options.map(x=>x.label||String(x)):[],votes:Array.isArray(p.poll_options)?p.poll_options.map(()=>0):[],likes:0,comments:[],liked:false}));}$('#loginTop').onclick=$('#loginSide').onclick=$('#chatLogin').onclick=login;
 $('#guidelines').onclick=()=>open('Community guidelines','Keep GameCity welcoming.','<p>• Make jokes, not targets.<br>• Never share private information or images without consent.<br>• No threats, hate, harassment, doxxing or impersonation.<br>• Report harmful content and respect boundaries.</p>',close);
 $('#cancel').onclick=close;$('#back').onclick=e=>{if(e.target===$('#back'))close()};$('#submit').onclick=()=>{if(action)action();else close()};supabase.auth.getSession().then(async({data})=>{currentUser=data.session?.user||null;if(currentUser)await afterAuth();else await loadPosts();render()});supabase.auth.onAuthStateChange((_event,session)=>{currentUser=session?.user||null});render();if(window.lucide)lucide.createIcons();
+
+/* KMCT live social UI */
+let activeConversation=null,activeConversationTitle='',chatChannel=null,chatRefreshTimer=null;
+const socialStatus=(id,msg)=>{const el=document.getElementById(id);if(el)el.textContent=msg};
+function requireUser(){if(!currentUser){toast('Please sign in first.');login();return false}return true}
+function safeText(v){return esc(v==null?'':v)}
+async function searchPeople(){
+ if(!requireUser())return;
+ const term=($('#peopleSearch')?.value||'').trim().replace(/^@/,'');
+ if(term.length<2){socialStatus('peopleResults','Enter at least 2 characters.');return}
+ const {data,error}=await supabase.from('profiles').select('id,username,display_name,bio').ilike('username','%'+term+'%').neq('id',currentUser.id).limit(20);
+ if(error){socialStatus('peopleResults','Search failed: '+error.message);return}
+ if(!data?.length){socialStatus('peopleResults','No matching members found.');return}
+ const {data:reqs}=await supabase.from('friend_requests').select('sender_id,receiver_id,status').or('sender_id.eq.'+currentUser.id+',receiver_id.eq.'+currentUser.id);
+ const {data:accepted}=await supabase.from('friend_requests').select('sender_id,receiver_id').eq('status','accepted').or('sender_id.eq.'+currentUser.id+',receiver_id.eq.'+currentUser.id);
+ const statusFor=id=>{if((accepted||[]).some(x=>x.sender_id===id||x.receiver_id===id))return 'friend';const q=(reqs||[]).find(x=>(x.sender_id===currentUser.id&&x.receiver_id===id)||(x.sender_id===id&&x.receiver_id===currentUser.id));return q?(q.status==='pending'?(q.sender_id===currentUser.id?'Request sent':'Requested you'):q.status):'none'};
+ $('#peopleResults').innerHTML=data.map(p=>{const st=statusFor(p.id);return '<div class="row" style="padding:10px 0;border-bottom:1px solid var(--line)"><div><strong>'+safeText(p.username)+'</strong><div class="muted">'+safeText(p.display_name||'Member')+'</div></div><div>'+(st==='none'?'<button class="primary addFriend" data-user="'+p.id+'">Add friend</button>':st==='friend'?'<button class="btn openFriendChat" data-user="'+p.id+'" data-name="'+safeText(p.username)+'">Message</button>':'<span class="muted">'+safeText(st)+'</span>')+'</div></div>'}).join('');
+}
+async function loadRequestsAndFriends(){
+ if(!currentUser)return;
+ const {data:incoming,error}=await supabase.from('friend_requests').select('id,sender_id,created_at').eq('receiver_id',currentUser.id).eq('status','pending').order('created_at',{ascending:false});
+ if(error){socialStatus('incomingRequests','Could not load requests: '+error.message);return}
+ const senderIds=(incoming||[]).map(x=>x.sender_id);
+ let senderNames={};
+ if(senderIds.length){const q=await supabase.from('profiles').select('id,username').in('id',senderIds);(q.data||[]).forEach(x=>senderNames[x.id]=x.username)}
+ $('#incomingRequests').innerHTML=incoming?.length?incoming.map(x=>'<div class="row" style="padding:8px 0"><span>'+safeText(senderNames[x.sender_id]||'Member')+'</span><span><button class="primary acceptFriend" data-id="'+x.id+'">Accept</button> <button class="btn declineFriend" data-id="'+x.id+'">Decline</button></span></div>').join(''):'No pending friend requests.';
+ const {data:friends,error:fe}=await supabase.from('friend_requests').select('sender_id,receiver_id').eq('status','accepted').or('sender_id.eq.'+currentUser.id+',receiver_id.eq.'+currentUser.id);
+ if(fe){socialStatus('friendList','Could not load friends: '+fe.message);return}
+ const ids=[...new Set((friends||[]).map(x=>x.sender_id===currentUser.id?x.receiver_id:x.sender_id))];
+ if(!ids.length){socialStatus('friendList','No friends yet. Search for classmates above.');return}
+ const q=await supabase.from('profiles').select('id,username').in('id',ids);
+ $('#friendList').innerHTML=(q.data||[]).map(p=>'<div class="row" style="padding:8px 0"><span>'+safeText(p.username)+'</span><button class="primary openFriendChat" data-user="'+p.id+'" data-name="'+safeText(p.username)+'">Message</button></div>').join('');
+}
+async function loadConversations(){
+ if(!requireUser())return;
+ socialStatus('chatStatus','Loading conversations…');
+ const {data:members,error}=await supabase.from('conversation_members').select('conversation_id').eq('user_id',currentUser.id);
+ if(error){socialStatus('chatStatus','Could not load inbox: '+error.message);return}
+ const ids=[...new Set((members||[]).map(x=>x.conversation_id))];
+ if(!ids.length){$('#conversationList').innerHTML='<div class="empty">No chats yet. Join global chat or message an accepted friend.</div>';socialStatus('chatStatus','Inbox ready.');return}
+ const {data:convs,error:ce}=await supabase.from('conversations').select('id,title,conversation_type').in('id',ids);
+ if(ce){socialStatus('chatStatus','Could not load chats: '+ce.message);return}
+ const {data:allMembers}=await supabase.from('conversation_members').select('conversation_id,user_id').in('conversation_id',ids);
+ const otherIds=[...new Set((allMembers||[]).filter(x=>x.user_id!==currentUser.id).map(x=>x.user_id))];
+ let names={};if(otherIds.length){const p=await supabase.from('profiles').select('id,username').in('id',otherIds);(p.data||[]).forEach(x=>names[x.id]=x.username)}
+ $('#conversationList').innerHTML=(convs||[]).map(c=>{const other=(allMembers||[]).find(x=>x.conversation_id===c.id&&x.user_id!==currentUser.id);const title=c.conversation_type==='group'?(c.title||'Group chat'):(names[other?.user_id]||'Friend chat');return '<button class="btn chooseChat" data-id="'+c.id+'" data-title="'+safeText(title)+'" style="display:block;width:100%;text-align:left;margin:7px 0">'+(c.conversation_type==='group'?'🌐 ':'✉️ ')+safeText(title)+'</button>'}).join('')||'<div class="empty">No conversations yet.</div>';
+ socialStatus('chatStatus','Your conversations');
+}
+async function openChat(id,title){
+ activeConversation=id;activeConversationTitle=title||'Chat';$('#chatRoomTitle').textContent=activeConversationTitle;$('#chatRoom').style.display='block';$('#conversationList').style.display='none';socialStatus('chatStatus','');await loadMessages();
+ if(chatChannel){supabase.removeChannel(chatChannel);chatChannel=null}
+ chatChannel=supabase.channel('kmct-chat-'+id).on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'conversation_id=eq.'+id},payload=>{if(payload.new?.conversation_id===activeConversation)loadMessages()}).subscribe();
+}
+async function loadMessages(){
+ if(!activeConversation)return;
+ const {data,error}=await supabase.from('messages').select('id,sender_id,body,created_at').eq('conversation_id',activeConversation).order('created_at',{ascending:true}).limit(200);
+ if(error){socialStatus('chatStatus','Could not load messages: '+error.message);return}
+ const ids=[...new Set((data||[]).map(m=>m.sender_id))];let names={};
+ if(ids.length){const p=await supabase.from('profiles').select('id,username').in('id',ids);(p.data||[]).forEach(x=>names[x.id]=x.username)}
+ $('#messageList').innerHTML=(data||[]).map(m=>'<div style="margin:8px 0;padding:9px;border-radius:10px;background:'+(m.sender_id===currentUser.id?'#35265d':'#191b32')+'"><strong>'+safeText(m.sender_id===currentUser.id?'You':names[m.sender_id]||'Member')+'</strong><div style="white-space:pre-wrap;overflow-wrap:anywhere;margin-top:4px">'+safeText(m.body)+'</div><div class="muted" style="margin-top:4px">'+new Date(m.created_at).toLocaleString()+'</div></div>').join('')||'<div class="empty">Say hello 👋</div>';
+ $('#messageList').scrollTop=$('#messageList').scrollHeight;
+}
+async function sendChatMessage(text){
+ if(!requireUser()||!activeConversation)return;
+ const body=text.trim();if(!body)return;
+ const {error}=await supabase.from('messages').insert({conversation_id:activeConversation,sender_id:currentUser.id,body});
+ if(error){toast('Message failed: '+error.message);return}
+ $('#messageText').value='';await loadMessages();
+}
+async function joinGlobalChat(){
+ if(!requireUser())return;
+ const {data,error}=await supabase.rpc('join_global_chat');
+ if(error){toast('Global chat setup required: '+error.message);return}
+ await loadConversations();await openChat(data,'KMCT Global Chat');
+}
+async function startFriendChat(userId,name){
+ if(!requireUser())return;
+ const {data,error}=await supabase.rpc('start_friend_conversation',{p_friend:userId});
+ if(error){toast('Could not start chat: '+error.message);return}
+ page('chat');await loadConversations();await openChat(data,name||'Friend chat');
+}
+$('#searchPeople')?.addEventListener('click',searchPeople);
+$('#peopleSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchPeople()}});
+$('#joinGlobal')?.addEventListener('click',joinGlobalChat);
+$('#refreshChats')?.addEventListener('click',loadConversations);
+$('#backChats')?.addEventListener('click',()=>{activeConversation=null;if(chatChannel){supabase.removeChannel(chatChannel);chatChannel=null}$('#chatRoom').style.display='none';$('#conversationList').style.display='block';loadConversations()});
+$('#messageForm')?.addEventListener('submit',e=>{e.preventDefault();sendChatMessage($('#messageText').value)});
+document.addEventListener('click',async e=>{
+ const add=e.target.closest('.addFriend');if(add){if(!requireUser())return;add.disabled=true;const {error}=await supabase.from('friend_requests').insert({sender_id:currentUser.id,receiver_id:add.dataset.user,status:'pending'});if(error)toast('Request failed: '+error.message);else{toast('Friend request sent.');await searchPeople()}return}
+ const accept=e.target.closest('.acceptFriend');if(accept){if(!requireUser())return;const {error}=await supabase.from('friend_requests').update({status:'accepted',updated_at:new Date().toISOString()}).eq('id',accept.dataset.id).eq('receiver_id',currentUser.id).eq('status','pending');if(error)toast('Accept failed: '+error.message);else{toast('Friend request accepted.');await loadRequestsAndFriends()}return}
+ const decline=e.target.closest('.declineFriend');if(decline){if(!requireUser())return;const {error}=await supabase.from('friend_requests').update({status:'declined',updated_at:new Date().toISOString()}).eq('id',decline.dataset.id).eq('receiver_id',currentUser.id).eq('status','pending');if(error)toast('Decline failed: '+error.message);else{toast('Request declined.');await loadRequestsAndFriends()}return}
+ const openBtn=e.target.closest('.openFriendChat');if(openBtn){await startFriendChat(openBtn.dataset.user,openBtn.dataset.name);return}
+ const choose=e.target.closest('.chooseChat');if(choose){await openChat(choose.dataset.id,choose.dataset.title);return}
+});
+const oldAfterAuth=afterAuth;
+afterAuth=async function(){await oldAfterAuth();await loadRequestsAndFriends();if(document.getElementById('page-chat')?.classList.contains('active'))await loadConversations()};
+const oldPage=page;
+page=function(n){oldPage(n);if(n==='people'&&currentUser)loadRequestsAndFriends();if(n==='chat'&&currentUser)loadConversations()};
+supabase.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;if(currentUser){try{await supabase.from('user_presence').update({is_online:true,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)}catch{} }});
+window.addEventListener('beforeunload',()=>{if(currentUser)supabase.from('user_presence').update({is_online:false,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)});
+
 </script></body></html>
