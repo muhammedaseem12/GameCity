@@ -502,3 +502,17 @@ body{background:#f2f8fd;color:#18324b}
  .composer-title textarea{min-height:52px}
  .composer-types button{padding:7px 10px}
 }
+
+
+/* Compact campus heading above the general chat */
+.home-welcome{padding:14px 18px!important;margin:10px 0 14px!important;border-radius:18px!important;min-height:0!important;gap:12px!important}
+.home-welcome .eyebrow{font-size:10px!important;letter-spacing:2px!important}
+.home-welcome h2{font-size:clamp(21px,5vw,28px)!important;line-height:1.12!important;margin:8px 0!important}
+.home-welcome p{font-size:13px!important;line-height:1.45!important;margin:8px 0!important}
+.home-welcome .welcome-stats{padding:9px 12px!important;margin-top:10px!important;min-height:0!important}
+.home-welcome .welcome-stats b{font-size:24px!important}
+.home-welcome .welcome-stats small{font-size:12px!important}
+.community-room.community-preview{margin-top:0!important}
+.room-expand-trigger{width:100%;min-height:58px}
+.room-expand-trigger h2{font-size:clamp(21px,3vw,27px)}
+@media(max-width:640px){.home-welcome{padding:12px 14px!important;margin:8px 0 12px!important}.home-welcome h2{font-size:23px!important}.home-welcome p{font-size:12px!important}.home-welcome .welcome-stats{margin-top:8px!important}.room-expand-trigger{min-height:56px}}
