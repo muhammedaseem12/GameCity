@@ -6,7 +6,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   const secret = process.env.KMCT_ADMIN_SESSION_SECRET;
   if (!secret || secret.length < 32) return send(res, 503, { authenticated: false, error: "Admin login is not configured yet." });
   const cookie = req.headers.cookie || "";
-  const match = cookie.match(/(?:^|;\\s*)kmct_admin_session=([^;]+)/);
+  const match = cookie.match(/(?:^|;\s*)kmct_admin_session=([^;]+)/);
   if (!match) return send(res, 401, { authenticated: false });
   const [payload, signature, extra] = match[1].split(".");
   if (!payload || !signature || extra) return send(res, 401, { authenticated: false });
