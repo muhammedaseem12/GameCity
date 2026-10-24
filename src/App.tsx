@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js";
-import { House, Image, MessageCircle, Users, CalendarDays, Bell, Search, LogIn, LogOut, Plus, Heart, Send, MessageSquare, Menu, X, LoaderCircle, Check, UserPlus, Globe, Compass, ShieldCheck, RefreshCw } from "lucide-react";
+import { House, Image, MessageCircle, Users, CalendarDays, Bell, Search, LogIn, LogOut, Plus, Heart, Send, MessageSquare, Menu, X, LoaderCircle, Check, UserPlus, Globe, Compass, ShieldCheck, RefreshCw, Pencil, Trash2 } from "lucide-react";
 import "./style.css";
 
 const URL = import.meta.env.VITE_SUPABASE_URL || "https://aekioojycvejxrufsvvu.supabase.co";
