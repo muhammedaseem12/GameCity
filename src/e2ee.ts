@@ -17,13 +17,13 @@ export async function ensureE2EEKeyPair(userId: string): Promise<{ publicKey: st
   if (stored) {
     try {
       const parsed = JSON.parse(stored);
-      const privateKey = await crypto.subtle.importKey("jwk", parsed.privateKey, { name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey"]);
+      const privateKey = await crypto.subtle.importKey("jwk", parsed.privateKey, { name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey", "deriveBits"]);
       return { publicKey: parsed.publicKey, privateKey };
     } catch {
       // A malformed or incompatible local key is replaced below.
     }
   }
-  const pair = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveKey"]);
+  const pair = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveKey", "deriveBits"]);
   const publicJwk = await crypto.subtle.exportKey("jwk", pair.publicKey);
   const privateJwk = await crypto.subtle.exportKey("jwk", pair.privateKey);
   localStorage.setItem(storageKey, JSON.stringify({ publicKey: JSON.stringify(publicJwk), privateKey: privateJwk }));
