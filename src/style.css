@@ -102,3 +102,17 @@
  .send-form .button svg{width:16px;height:16px}
  .chat-friends-tools{margin-bottom:14px}
 }
+
+
+/* Voice recording waveform and cleaner chat header */
+.top-actions:empty{display:none}
+.voice-recording-live{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;flex:1;padding:9px 12px;background:#f5f0ff;border:1px solid #e7ddff;border-radius:14px;overflow:hidden}
+.recording-dot{width:8px;height:8px;flex:0 0 8px;background:#e34e73;border-radius:50%;box-shadow:0 0 0 4px #fce4eb;animation:recording-pulse 1s ease-in-out infinite}
+.voice-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:28px;flex:1;min-width:0;overflow:hidden}
+.voice-waveform i{display:block;width:3px;min-width:2px;height:6px;border-radius:4px;background:linear-gradient(180deg,#9273e8,#5e51c7);animation:voice-wave 650ms ease-in-out infinite alternate;transform-origin:center}
+.voice-waveform i:nth-child(4n){height:18px}.voice-waveform i:nth-child(3n){height:12px}
+.recording-label{font-size:11px;font-weight:700;color:#6d55bf;white-space:nowrap}
+.send-form .recording-stop{background:linear-gradient(135deg,#e64e78,#c92c5b);color:white;border-color:transparent}
+@keyframes voice-wave{from{transform:scaleY(.35);opacity:.65}to{transform:scaleY(1.35);opacity:1}}
+@keyframes recording-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@media(max-width:680px){.voice-recording-live{gap:7px;padding:8px 9px;min-width:0}.voice-waveform{gap:2px;height:25px}.voice-waveform i{width:2px}.recording-label{font-size:10px}.send-form .recording-stop{padding:10px 9px}}
