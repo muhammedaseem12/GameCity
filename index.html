@@ -182,7 +182,7 @@ page=function(n){oldPage(n);if(n==='people'&&currentUser)loadRequestsAndFriends(
 supabase.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;if(currentUser){try{await supabase.from('user_presence').update({is_online:true,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)}catch{} }});
 window.addEventListener('beforeunload',()=>{if(currentUser)supabase.from('user_presence').update({is_online:false,last_seen_at:new Date().toISOString()}).eq('user_id',currentUser.id)});
 
-</script></body></html>
 /* Resilient mobile navigation and control feedback */
 document.addEventListener('click',function(e){const nav=e.target.closest('button[data-page]');if(nav){e.preventDefault();page(nav.dataset.page);return}const b=e.target.closest('button');if(b&&b.id==='publish'&&!currentUser){e.preventDefault();login()} });
 window.addEventListener('error',function(e){console.error('KMCT UI error:',e.message,e.filename,e.lineno)});
+</script></body></html>
