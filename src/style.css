@@ -256,3 +256,19 @@ footer{border-color:#e7e7e7}
  .chat-layout.conversation-open .chat-pane{height:calc(100dvh - 200px);min-height:420px}
  .chat-friends-tools:has(.people-list:empty){padding-bottom:8px}
 }
+
+
+/* Friend search controls: compact green action aligned at the row's lower right */
+.chat-friends-tools .person-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:10px 0}
+.chat-friends-tools .person-row .person-info{flex:1 1 60%;min-width:130px}
+.chat-friends-tools .person-row>.button{margin-left:auto;align-self:flex-end;background:#128c7e;color:#fff;border:0;border-radius:22px;padding:9px 15px;min-height:38px}
+.chat-friends-tools .person-row>.muted{margin-left:auto;align-self:flex-end;font-size:12px}
+.chat-friends-tools .inline-form .button{background:#128c7e!important;color:#fff}
+@media(max-width:680px){
+ .widget:has(.chat-layout.conversation-open) .chat-friends-tools{display:none}
+ .widget:has(.chat-layout.conversation-open) .chat-page-heading{display:none}
+ .widget:has(.chat-layout.conversation-open) .chat-layout{height:calc(100dvh - 165px);min-height:0}
+ .widget:has(.chat-layout.conversation-open) .chat-layout.conversation-open .chat-pane{height:calc(100dvh - 165px);min-height:0}
+ .chat-friends-tools .person-row{gap:7px;padding:10px 2px}
+ .chat-friends-tools .person-row>.button{margin-left:auto}
+}
