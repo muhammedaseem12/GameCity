@@ -184,16 +184,29 @@ create policy "users send friend requests" on public.friend_requests for insert 
 drop policy if exists "receiver or sender updates request" on public.friend_requests;
 create policy "receiver or sender updates request" on public.friend_requests for update to authenticated using (sender_id=auth.uid() or receiver_id=auth.uid()) with check ((sender_id=auth.uid() or receiver_id=auth.uid()) and status in ('accepted','declined','cancelled'));
 
+-- SECURITY DEFINER membership check prevents RLS recursion when policies on
+-- conversations/messages need to verify membership in conversation_members.
+create or replace function public.is_conversation_member(p_conversation_id uuid)
+returns boolean language sql stable security definer set search_path = ''
+as $
+  select exists (
+    select 1 from public.conversation_members cm
+    where cm.conversation_id = p_conversation_id and cm.user_id = auth.uid()
+  );
+$;
+revoke all on function public.is_conversation_member(uuid) from public;
+grant execute on function public.is_conversation_member(uuid) to authenticated;
+
 drop policy if exists "conversation members read conversations" on public.conversations;
-create policy "conversation members read conversations" on public.conversations for select to authenticated using (exists(select 1 from public.conversation_members cm where cm.conversation_id=id and cm.user_id=auth.uid()));
+create policy "conversation members read conversations" on public.conversations for select to authenticated using (public.is_conversation_member(id));
 drop policy if exists "members can see membership" on public.conversation_members;
-create policy "members can see membership" on public.conversation_members for select to authenticated using (exists(select 1 from public.conversation_members mine where mine.conversation_id=conversation_id and mine.user_id=auth.uid()));
+create policy "members can see membership" on public.conversation_members for select to authenticated using (public.is_conversation_member(conversation_id));
 drop policy if exists "users can create own membership" on public.conversation_members;
 create policy "users can create own membership" on public.conversation_members for insert to authenticated with check (user_id=auth.uid());
 drop policy if exists "conversation members read messages" on public.messages;
-create policy "conversation members read messages" on public.messages for select to authenticated using (exists(select 1 from public.conversation_members cm where cm.conversation_id=messages.conversation_id and cm.user_id=auth.uid()));
+create policy "conversation members read messages" on public.messages for select to authenticated using (public.is_conversation_member(conversation_id));
 drop policy if exists "members send messages only as self" on public.messages;
-create policy "members send messages only as self" on public.messages for insert to authenticated with check (sender_id=auth.uid() and exists(select 1 from public.conversation_members cm where cm.conversation_id=messages.conversation_id and cm.user_id=auth.uid()));
+create policy "members send messages only as self" on public.messages for insert to authenticated with check (sender_id=auth.uid() and public.is_conversation_member(conversation_id));
 
 drop policy if exists "presence visible to authenticated users" on public.user_presence;
 create policy "presence visible to authenticated users" on public.user_presence for select to authenticated using (true);
