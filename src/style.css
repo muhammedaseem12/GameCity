@@ -116,3 +116,63 @@
 @keyframes voice-wave{from{transform:scaleY(.35);opacity:.65}to{transform:scaleY(1.35);opacity:1}}
 @keyframes recording-pulse{0%,100%{opacity:1}50%{opacity:.45}}
 @media(max-width:680px){.voice-recording-live{gap:7px;padding:8px 9px;min-width:0}.voice-waveform{gap:2px;height:25px}.voice-waveform i{width:2px}.recording-label{font-size:10px}.send-form .recording-stop{padding:10px 9px}}
+
+
+/* Instagram-inspired clean social layout */
+:root{--ink:#171717;--muted:#737373;--line:#e5e5e5;--paper:#fff}
+body{background:#fafafa;color:#171717;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.shell{max-width:1440px;background:#fafafa;grid-template-columns:235px minmax(0,1fr);gap:0}
+.sidebar{background:#fff;border-right:1px solid #e7e7e7;padding:28px 15px;position:sticky;top:0;height:100vh}
+.brand{color:#171717;font-weight:800;letter-spacing:-.8px}
+.brand-mark{background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff;border-radius:12px}
+.sidebar nav{gap:7px;margin-top:35px}
+.sidebar nav button{color:#262626;border-radius:10px;padding:13px 12px;font-size:14px}
+.sidebar nav button:hover,.sidebar nav button.active{background:#f4f4f4;color:#111}
+.main{max-width:1040px;padding:28px clamp(16px,4vw,48px) 100px}
+.topbar{border-bottom:1px solid #eee;padding-bottom:17px;margin-bottom:22px}
+.topbar h1{font-size:23px;letter-spacing:-.7px;color:#171717}
+.panel{background:#fff;border:1px solid #e6e6e6;border-radius:12px;box-shadow:none}
+.hero{background:#fff;border:1px solid #e7e7e7;border-radius:14px;box-shadow:none}
+.hero h2{color:#171717;letter-spacing:-1.5px}
+.hero h2 span{background:linear-gradient(90deg,#feda75,#d62976,#962fbf);-webkit-background-clip:text;background-clip:text;color:transparent}
+.composer{border-radius:12px}
+.button.primary{background:linear-gradient(100deg,#d62976,#962fbf,#4f5bd5);box-shadow:none}
+.avatar,.chat-avatar{background:#f1e6fa;border-color:#ead9f2;color:#7b2a85}
+.section-title h2,.widget h2{color:#171717}
+.filters button.filter-active,.kind-select button.kind-active{background:#f9e8f1;border-color:#f5d0e1;color:#c0266a}
+.post{padding:18px;border-radius:12px}
+.post-head b{color:#171717}
+.post-tag{background:#fff5fa;border-color:#f7d9e7;color:#c0266a}
+.post-body{color:#262626;line-height:1.65}
+.post-actions{border-top:1px solid #efefef}
+.post-actions button{color:#555}
+.post-actions button:hover,.post-actions button.liked{background:#fff0f6;color:#d62976}
+.chat-layout{border-radius:12px;border-color:#e5e5e5;box-shadow:none}
+.chat-list{background:#fff;border-color:#eee}
+.chat-list button:hover,.chat-list button.chat-selected{background:#f8f8f8;color:#111;border-color:#eee}
+.chat-pane{background:#fafafa;background-image:none}
+.chat-title{background:#fff;border-color:#eee}
+.messages{background:#fafafa}
+.bubble{background:#fff;border:1px solid #e6e6e6;color:#171717;box-shadow:none}
+.bubble.mine{background:#fce7f3;border-color:#f6cfe1}
+.bubble p{color:#262626}
+.send-form{background:#fff;border-color:#eee}
+.send-form input{background:#fff;border-color:#ddd}
+.mobile-nav{background:#fff;border-top:1px solid #e5e5e5}
+.mobile-nav button{color:#737373;font-size:10px}
+.mobile-nav button.mobile-active{color:#d62976}
+footer{border-color:#e7e7e7}
+@media(max-width:680px){
+ body{background:#fff}
+ .main{padding:12px 0 90px}
+ .topbar{padding:0 14px 13px;margin-bottom:15px}
+ .topbar h1{font-size:21px}
+ .hero{margin:0 12px 15px;border-radius:12px}
+ .composer,.section-title,.filters,.feed,.widget{margin-left:10px;margin-right:10px}
+ .composer{margin-bottom:20px}
+ .post{border-left:0;border-right:0;border-radius:0;padding:15px 13px}
+ .feed{gap:10px;margin-left:0;margin-right:0}
+ .section-title{padding:0 3px}
+ .chat-layout{border-radius:0;border-left:0;border-right:0}
+ .mobile-nav{padding-top:10px}
+}
