@@ -410,3 +410,18 @@ body{background:#f2f8fd;color:#18324b}
  .topbar .eyebrow{padding-right:90px}
  .topbar h1{padding-right:4px}
 }
+
+
+/* Make the Messages page and surrounding empty canvas pure white */
+.main,.main .widget,.main .chat-layout,.main .chat-list,.main .chat-pane,
+.main .chat-friends-tools,.main .chat-list-section,.main .chat-list-empty,
+.main .empty,.main .chat-content,.main .messages{background-color:#fff!important}
+.main .chat-friends-tools,.main .chat-list,.main .chat-pane{border-color:#edf1f5!important}
+.main .chat-list button{background:#fff!important}
+.main .chat-list button:hover,.main .chat-list button.chat-selected{background:#f4faff!important}
+.main .chat-layout{box-shadow:none!important}
+@media(max-width:680px){
+ .main:has(.chat-layout:not(.conversation-open)){background:#fff!important}
+ .main .chat-layout:not(.conversation-open),.main .chat-layout:not(.conversation-open) .chat-list,
+ .main .chat-layout:not(.conversation-open) .chat-pane{background:#fff!important}
+}
