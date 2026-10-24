@@ -344,3 +344,32 @@ body{background:#f2f8fd;color:#18324b}
  .room-input-row .button{padding:12px 14px}
  .room-input-row .button span{display:none}
 }
+
+
+/* Consistent blue chat palette: private chat bubbles, inputs, replies and controls */
+.chat-layout,.chat-pane,.chat-list{background:#f2f8fd;border-color:#d8e9f6}
+.chat-list>button{background:#fff;border-color:#e0edf7;color:#254660}
+.chat-list>button:hover,.chat-list>button.chat-selected{background:#e5f4ff;border-color:#b9def5}
+.chat-title{background:#eaf6ff;border-color:#d6eafa;color:#183d59}
+.chat-title small,.chat-friend-label small{color:#6c879e}
+.chat-avatar{background:#d6edff;color:#247fb7}
+.messages{background:#f1f8fd}
+.bubble{background:#fff;border:1px solid #dceaf5;color:#23435d;border-radius:5px 16px 16px 16px;box-shadow:0 2px 5px #225b800a}
+.bubble.mine{background:#d8efff;border:1px solid #c0e3fa;color:#163e5a;border-radius:16px 5px 16px 16px}
+.bubble small,.bubble>small{color:#64839a}
+.send-form,.chat-friends-tools{background:#fff;border-color:#dceaf5}
+.send-form input,.chat-friends-tools .inline-form input,.inline-form input{background:#f6fbff;border:1px solid #d5e7f5;color:#183d59}
+.send-form input:focus,.chat-friends-tools .inline-form input:focus,.inline-form input:focus{border-color:#78bce7;box-shadow:0 0 0 3px #e4f4ff}
+.send-form .button.primary,.chat-friends-tools .person-row>.button,.chat-friends-tools .inline-form .button{background:#258bca!important;color:#fff}
+.button.secondary{background:#e8f5ff;border-color:#cfe7f7;color:#2679aa}
+.chat-back,.icon-button{color:#287fb9}
+.recording-stop{background:#e2f3ff!important;color:#1c79b5!important;border-color:#bfe3f8!important}
+.community-room-head{background:#eaf6ff}
+.community-room-messages{background:#f0f8fe}
+.room-message{background:#fff;border-color:#d7e9f6}
+.room-message-meta b{color:#207eb8}
+.reply-action{color:#187db9}
+.room-reply-note,.replying-to{background:#e7f4ff;border-color:#8bc8ef;color:#356d91}
+.community-room-form{background:#fff}
+.room-input-row input{background:#f5faff;border-color:#d3e7f5;color:#183d59}
+.room-input-row .button.primary{background:#248ed0}
