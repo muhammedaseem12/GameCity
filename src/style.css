@@ -425,3 +425,7 @@ body{background:#f2f8fd;color:#18324b}
  .main .chat-layout:not(.conversation-open),.main .chat-layout:not(.conversation-open) .chat-list,
  .main .chat-layout:not(.conversation-open) .chat-pane{background:#fff!important}
 }
+
+
+.chat-list-heading{display:flex!important;align-items:center;justify-content:space-between;gap:10px;padding:8px 16px 12px!important;color:#24445f!important;font-size:13px!important;letter-spacing:.04em;text-transform:uppercase}
+.chat-list-heading .online-count{font-size:11px;letter-spacing:0;color:#218d77;white-space:nowrap}
