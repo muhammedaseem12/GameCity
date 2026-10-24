@@ -31,13 +31,13 @@ body{background:radial-gradient(ellipse at 8% 0%,#ffe4f1 0,transparent 34%),radi
 .trend .num{color:#b2a6d9}
 .date{background:linear-gradient(145deg,#eee8ff,#e3f8ff);color:#6751b0}
 .empty{color:#85829e;border-color:#dedbed;background:#ffffff8c}
-.modalback{background:#4c456b55;backdrop-filter:blur(12px)}
+.modalback{background:#4c456b55;backdrop-filter:blur(12px);pointer-events:none}.modalback.open{pointer-events:auto}
 .modal{background:#fff;border-color:#e4daf9;box-shadow:0 22px 70px #33285b2a;color:#292747}
 .toast{background:#fff;border-color:#dcd2fa;color:#43376f;box-shadow:0 8px 25px #4a3a771c}
 .mobile{background:#ffffffef;border-top-color:#e7e3f3;backdrop-filter:blur(16px)}
 .mobile button{color:#77738f}
 .mobile button.active{color:#7654d5}
-@media(max-width:680px){.app{background:transparent}}
+@media(max-width:680px){.app{background:transparent}.top{align-items:flex-start;flex-wrap:wrap}.top .row{width:100%;justify-content:flex-start}.search{flex:1;min-width:0}.composer{padding:12px;gap:9px}.composebody textarea{font-size:14px}.composebody .row{justify-content:flex-start}.composebody .row button{flex:1;min-width:0;padding:10px 8px;font-size:12px}.hero .pill{font-size:10px}.title{font-size:30px}}
 
 nav i[data-lucide]{width:18px;height:18px;vertical-align:middle;margin-right:8px;stroke-width:1.8}.mobile [data-lucide]{width:19px;height:19px;display:inline-block;margin:auto;stroke-width:1.8}.nav button{display:flex;align-items:center;gap:2px}.nav button.active{font-weight:650}.btn,.primary{font-weight:600;letter-spacing:.05px}.title{font-weight:760}.post,.widget,.composer{box-shadow:0 7px 24px rgba(55,45,115,.055)}
 </style></head><body>
@@ -60,6 +60,7 @@ nav i[data-lucide]{width:18px;height:18px;vertical-align:middle;margin-right:8px
 const SUPABASE_URL = "https://aekioojycvejxrufsvvu.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ZYRBLcUrnyZ8vWL_5mEPig_UKVH81jo";
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+document.getElementById('back')?.classList.remove('open');
 let currentUser = null;
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let filter='all',action=null;
 let posts=[{id:1,type:'meme',name:'PixelPanda',initial:'P',time:'12 min ago',text:'POV: you opened the assignment brief and it has 14 pages 😭',art:'“I thought this was a 5-minute task”',likes:42,comments:['this is literally me 💀'],liked:false},{id:2,type:'post',name:'midnight.mind',initial:'M',time:'28 min ago',text:'Tiny reminder: you do not need your entire life figured out today. Drink water, breathe, and do one thing at a time. ✨',likes:28,comments:[],liked:false},{id:3,type:'poll',name:'OrbitOfficial',initial:'O',time:'1 hr ago',text:'Best way to survive deadline week?',options:['Coffee + chaos','Group study','Power nap','Pure luck'],votes:[12,18,7,9],likes:16,comments:[],liked:false},{id:4,type:'confession',name:'Anonymous',initial:'?',time:'2 hr ago',text:'I act like I understand the lecture, then become a full-time YouTube tutorial detective. Anyone else?',likes:31,comments:[],liked:false}];
