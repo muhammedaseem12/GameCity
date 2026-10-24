@@ -391,3 +391,9 @@ body{background:#f2f8fd;color:#18324b}
  .widget:has(.chat-layout.conversation-open) .chat-pane .empty{flex:1;display:flex;align-items:center;justify-content:center}
  body:has(.widget .chat-layout.conversation-open){overflow:hidden}
 }
+
+
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top-actions{display:flex;align-items:center;justify-content:flex-end;flex:0 0 auto}
+.top-login{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:10px 16px;border-radius:22px;background:#258bca;color:#fff;font-size:13px;font-weight:700;white-space:nowrap}
+@media(max-width:680px){.topbar{padding-right:14px}.top-login{min-height:36px;padding:8px 12px;font-size:12px}.top-login svg{width:15px;height:15px}}
